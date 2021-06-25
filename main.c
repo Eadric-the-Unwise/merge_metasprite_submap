@@ -392,16 +392,6 @@ void main()
                 }
             }
         }
-
-        if (bkg.redraw)
-        {
-            wait_vbl_done();
-            set_camera();
-            bkg.redraw = FALSE;
-        }
-        else
-            wait_vbl_done();
-
         if (joypads.joy0 & J_LEFT)
         {
 
@@ -527,7 +517,16 @@ void main()
                 smoke_start_delay = SMOKE_IDLE_START_DELAY;
             }
         }
-        /******************************/
+        if (bkg.redraw)
+        {
+            wait_vbl_done();
+            set_camera();
+            bkg.redraw = FALSE;
+        }
+        else
+            wait_vbl_done();
+
+                /******************************/
         // Animations
         /******************************/
 
