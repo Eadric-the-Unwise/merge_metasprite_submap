@@ -1,5 +1,5 @@
 REM Automatically generated from Makefile
-del detective_project.gb
+@REM del detective_project.gb
 
 
 @REM C:\c_code\gbdk\bin\lcc.exe -autobank -Wb-ext=.rel -Wb-v -Wl-yt0x1B -Wl-yo256 -Wl-ya4 -o large_map.gb large_map.c^
@@ -13,6 +13,10 @@ del detective_project.gb
 
 
 C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m  -c -o main.o main.c
+
+C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o tiles\detective\tile_detectivewalk.o tiles\detective\tile_detectivewalk.c
+C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o tiles\detective\cig_shine.o tiles\detective\cig_shine.c
+C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o tiles\detective\smoke.o tiles\detective\smoke.c
 
 C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\submap\submap.o maps\submap\submap.c
 C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\submap\submap_tiles.o maps\submap\submap_tiles.c
@@ -31,8 +35,10 @@ C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\house\cellar\cellar_lvl2\cella
 C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\house\cellar\cellar_lvl2\cellar_lvl2_map.o maps\house\cellar\cellar_lvl2\cellar_lvl2_map.c
 
 C:\c_code\gbdk\bin\lcc.exe -autobank -Wb-ext=.rel -Wb-v -Wl-yt0x1B -Wl-yo256 -Wl-ya4 -o detective_project.gb macros.c main.c^
- maps\submap\submap.o maps\submap\submap_tiles.o maps\submap\submap_map.o^
-  maps\house\house.o maps\house\house_map.o maps\house\house_tiles.o^
-   maps\house\cellar\cellar.o maps\house\cellar\cellar_map.o maps\house\cellar\cellar_tiles.o^
-    maps\house\cellar\cellar_lvl2\cellar_lvl2.o maps\house\cellar\cellar_lvl2\cellar_lvl2_tiles.o maps\house\cellar\cellar_lvl2\cellar_lvl2_map.o^
+ tiles\detective\tile_detectivewalk.o tiles\detective\cig_shine.o tiles\detective\smoke.o^
+  maps\submap\submap.o maps\submap\submap_tiles.o maps\submap\submap_map.o^
+   maps\house\house.o maps\house\house_map.o maps\house\house_tiles.o^
+    maps\house\cellar\cellar.o maps\house\cellar\cellar_map.o maps\house\cellar\cellar_tiles.o^
+     maps\house\cellar\cellar_lvl2\cellar_lvl2.o maps\house\cellar\cellar_lvl2\cellar_lvl2_tiles.o maps\house\cellar\cellar_lvl2\cellar_lvl2_map.o
+
   
