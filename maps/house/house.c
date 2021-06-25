@@ -5,7 +5,7 @@ extern Variables bkg;
 
 void init_house()
 {
-    fadeout();
+    fadeout_black();
     HIDE_BKG;
     bkg.sliding = FALSE;
     bkg.camera_x = bkg.camera_y = 0;
@@ -31,5 +31,5 @@ void init_house()
     SCX_REG = bkg.camera_x;
     SCY_REG = bkg.camera_y;
     SHOW_BKG;
-    fadein();
+    fadein_black();
 }

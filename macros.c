@@ -83,8 +83,9 @@ void performantdelay(UINT8 numloops)
 }
 //binary doesn't show 0's on the front or back end.
 //00011011 will actually load 'flipped' in the palette where BLACK is on the left
-void fadein()
+void fadein_black()
 {
+    performantdelay(20);
     for (UINT8 i = 0; i < 4; i++)
     {
         switch (i)
@@ -103,10 +104,10 @@ void fadein()
             BGP_REG = DEFAULT_PALETTE;
             break;
         }
-        performantdelay(7);
+        performantdelay(8);
     }
 }
-void fadeout()
+void fadeout_black()
 {
     for (UINT8 i = 0; i < 4; i++)
     {
@@ -126,6 +127,54 @@ void fadeout()
             BGP_REG = 0xFF;
             break;
         }
-        performantdelay(7);
+        performantdelay(8);
+    }
+}
+
+void fadein_white()
+{
+    performantdelay(20);
+    for (UINT8 i = 0; i < 4; i++)
+    {
+        switch (i)
+        {
+            //FADE FROM WHITE
+        case 0:
+            BGP_REG = 0x00;
+            break;
+        case 1:
+            BGP_REG = 0x01;
+            break;
+        case 2:
+            BGP_REG = 0x06;
+            break;
+        case 3:
+            BGP_REG = DEFAULT_PALETTE;
+            break;
+        }
+        performantdelay(8);
+    }
+}
+void fadeout_white()
+{
+    for (UINT8 i = 0; i < 4; i++)
+    {
+        switch (i)
+        {
+            //FADE TO WHITE
+        case 0:
+            BGP_REG = DEFAULT_PALETTE;
+            break;
+        case 1:
+            BGP_REG = 0x06;
+            break;
+        case 2:
+            BGP_REG = 0x01;
+            break;
+        case 3:
+            BGP_REG = 0x00;
+            break;
+        }
+        performantdelay(8);
     }
 }

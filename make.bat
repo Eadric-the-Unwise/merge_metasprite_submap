@@ -1,5 +1,5 @@
 REM Automatically generated from Makefile
-del large_map.gb
+del detective_project.gb
 
 
 @REM C:\c_code\gbdk\bin\lcc.exe -autobank -Wb-ext=.rel -Wb-v -Wl-yt0x1B -Wl-yo256 -Wl-ya4 -o large_map.gb large_map.c^
@@ -12,7 +12,7 @@ del large_map.gb
 
 
 
-C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m  -c -o large_map.o large_map.c
+C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m  -c -o main.o main.c
 
 C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\submap\submap.o maps\submap\submap.c
 C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\submap\submap_tiles.o maps\submap\submap_tiles.c
@@ -30,7 +30,7 @@ C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\house\cellar\cellar_lvl2\cella
 C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\house\cellar\cellar_lvl2\cellar_lvl2_tiles.o maps\house\cellar\cellar_lvl2\cellar_lvl2_tiles.c
 C:\c_code\gbdk\bin\lcc.exe -Wa-l -Wl-m -c -o maps\house\cellar\cellar_lvl2\cellar_lvl2_map.o maps\house\cellar\cellar_lvl2\cellar_lvl2_map.c
 
-C:\c_code\gbdk\bin\lcc.exe -autobank -Wb-ext=.rel -Wb-v -Wl-yt0x1B -Wl-yo256 -Wl-ya4 -o large_map.gb macros.c large_map.c^
+C:\c_code\gbdk\bin\lcc.exe -autobank -Wb-ext=.rel -Wb-v -Wl-yt0x1B -Wl-yo256 -Wl-ya4 -o detective_project.gb macros.c main.c^
  maps\submap\submap.o maps\submap\submap_tiles.o maps\submap\submap_map.o^
   maps\house\house.o maps\house\house_map.o maps\house\house_tiles.o^
    maps\house\cellar\cellar.o maps\house\cellar\cellar_map.o maps\house\cellar\cellar_tiles.o^

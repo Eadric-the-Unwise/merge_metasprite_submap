@@ -8,7 +8,7 @@ extern Variables bkg;
 
 void init_submap()
 {
-    fadeout();
+    fadeout_white();
     HIDE_BKG;
     bkg.sliding = FALSE;
     bkg.camera_x = 320;
@@ -36,5 +36,5 @@ void init_submap()
     SCY_REG = bkg.camera_y;
     SHOW_BKG;
 
-    fadein();
+    fadein_white();
 }
