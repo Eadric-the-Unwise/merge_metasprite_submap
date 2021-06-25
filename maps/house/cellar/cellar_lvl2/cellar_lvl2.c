@@ -5,6 +5,7 @@ extern Variables bkg;
 
 void init_cellar_lvl2()
 {
+    fadeout();
     HIDE_BKG;
     bkg.sliding = FALSE;
     bkg.camera_x = bkg.camera_y = 0;
@@ -30,9 +31,5 @@ void init_cellar_lvl2()
     SCX_REG = bkg.camera_x;
     SCY_REG = bkg.camera_y;
     SHOW_BKG;
-}
-
-void func_1() BANKED
-{
-    printf("Func1 in ROM bank %u\n", _current_bank);
+    fadein();
 }

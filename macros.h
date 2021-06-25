@@ -17,6 +17,8 @@
 // #define SIZE(A) (UWORD) & (__SIZE_PREFIX(A))
 // #define OFFSET(A) (void *)&(A)
 
+#define DEFAULT_PALETTE 0x1B
+
 enum Cam
 {
     vertical_cam,
@@ -55,5 +57,7 @@ void set_camera();
 inline void set_level(UINT8, UINT8, const UINT8 *, UINT8 bank);
 void set_bkg_data_nonbanked(UINT8 first_tile, UINT8 nb_tiles, const UINT8 *tile_data, UINT8 bank);
 void set_bkg_submap_nonbanked(UINT8 x, UINT8 y, UINT8 w, UINT8 h, const UINT8 *map_data, UINT8 map_w, UINT8 bank);
+void fadein();
+void fadeout();
 
 #endif

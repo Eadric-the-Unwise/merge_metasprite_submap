@@ -8,6 +8,8 @@
 
 #define HOUSE_TILE_COUNT 65
 
+#define HOUSE_PALETTE 0x1B
+
 extern const void __bank_HOUSE_TILE_DATA;
 
 extern const unsigned char HOUSE_TILE_DATA[];

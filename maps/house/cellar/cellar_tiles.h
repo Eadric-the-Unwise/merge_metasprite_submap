@@ -8,6 +8,8 @@
 
 #define CELLAR_TILE_COUNT 28
 
+#define CELLAR_PALETTE 0x1B
+
 extern const void __bank_CELLAR_TILE_DATA;
 
 extern const unsigned char CELLAR_TILE_DATA[];

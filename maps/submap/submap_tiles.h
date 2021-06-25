@@ -6,7 +6,9 @@
 #ifndef __MAP_SUBMAP_TILES_H__
 #define __MAP_SUBMAP_TILES_H__
 
-#define SUBMAP_TILE_COUNT 213
+#define SUBMAP_TILE_COUNT 238
+
+#define SUBMAP_PALETTE 0x1B
 
 extern const void __bank_SUBMAP_TILE_DATA;
 

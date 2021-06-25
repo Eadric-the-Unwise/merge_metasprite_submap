@@ -72,3 +72,60 @@ void set_bkg_submap_nonbanked(UINT8 x, UINT8 y, UINT8 w, UINT8 h, const UINT8 *m
     set_bkg_submap(x, y, w, h, map_data, map_w);
     SWITCH_ROM_MBC1(__save);
 }
+
+void performantdelay(UINT8 numloops)
+{
+    UINT8 i;
+    for (i = 0; i < numloops; i++)
+    {
+        wait_vbl_done();
+    }
+}
+//binary doesn't show 0's on the front or back end.
+//00011011 will actually load 'flipped' in the palette where BLACK is on the left
+void fadein()
+{
+    for (UINT8 i = 0; i < 4; i++)
+    {
+        switch (i)
+        {
+            //FADE FROM WHITE
+        case 0:
+            BGP_REG = 0xFF;
+            break;
+        case 1:
+            BGP_REG = 0xBF;
+            break;
+        case 2:
+            BGP_REG = 0x6F;
+            break;
+        case 3:
+            BGP_REG = DEFAULT_PALETTE;
+            break;
+        }
+        performantdelay(7);
+    }
+}
+void fadeout()
+{
+    for (UINT8 i = 0; i < 4; i++)
+    {
+        switch (i)
+        {
+            //FADE TO WHITE
+        case 0:
+            BGP_REG = DEFAULT_PALETTE;
+            break;
+        case 1:
+            BGP_REG = 0x6F;
+            break;
+        case 2:
+            BGP_REG = 0xBF;
+            break;
+        case 3:
+            BGP_REG = 0xFF;
+            break;
+        }
+        performantdelay(7);
+    }
+}

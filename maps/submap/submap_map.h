@@ -6,8 +6,8 @@
 #ifndef __MAP_SUBMAP_MAP_H__
 #define __MAP_SUBMAP_MAP_H__
 
-#define SUBMAP_MAP_WIDTH 60
-#define SUBMAP_MAP_HEIGHT 54
+#define SUBMAP_MAP_WIDTH 64
+#define SUBMAP_MAP_HEIGHT 64
 
 extern const void __bank_SUBMAP_MAP_DATA;
 

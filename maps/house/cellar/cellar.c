@@ -5,6 +5,7 @@ extern Variables bkg;
 
 void init_cellar()
 {
+    fadeout();
     HIDE_BKG;
     bkg.sliding = FALSE;
     bkg.camera_x = bkg.camera_y = 0;
@@ -30,4 +31,5 @@ void init_cellar()
     SCX_REG = bkg.camera_x;
     SCY_REG = bkg.camera_y;
     SHOW_BKG;
+    fadein();
 }
