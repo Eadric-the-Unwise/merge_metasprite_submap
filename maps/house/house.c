@@ -14,7 +14,6 @@ void init_house(Character *detective)
     detective->y = 80;
     detective->direction = FACE_DOWN;
     detective->body_frame_index = DETECTIVE_BODY_DOWN_FRAME_START;
-    move_metasprite(tile_detectivewalk_metasprites[detective->body_frame_index], detective->body_tile_index, hiwater, detective->x, detective->y);
 
     bkg.sliding = FALSE;
     bkg.camera_x = bkg.camera_y = 0;
