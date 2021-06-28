@@ -334,33 +334,7 @@ void main()
                 }
             }
         }
-        // // make sure else if before all other inputs
-        // else if (bkg.joy & J_LEFT && bkg.camera_style == scroll_cam)
-        // {
-        //     // Realistically this would be gated by an edge-check and valid-edge check
-        //     // (this would replace camera_x++/-- or camera_y++/--)
-        //     bkg.slide_x = -2; // How much to move in the X direction
-        //     bkg.slide_y = 0;  // How much to move in the Y direction
-        //     bkg.sliding = 1;  // Initiate slide
-        // }
-        // else if (bkg.joy & J_RIGHT && bkg.camera_style == scroll_cam)
-        // {
-        //     bkg.slide_x = 2;
-        //     bkg.slide_y = 0;
-        //     bkg.sliding = 1;
-        // }
-        // else if (bkg.joy & J_UP && bkg.camera_style == scroll_cam)
-        // {
-        //     bkg.slide_x = 0;
-        //     bkg.slide_y = -2;
-        //     bkg.sliding = 1;
-        // }
-        // else if (bkg.joy & J_DOWN && bkg.camera_style == scroll_cam)
-        // {
-        //     bkg.slide_x = 0;
-        //     bkg.slide_y = 2;
-        //     bkg.sliding = 1;
-        // }
+
         else if (bkg.camera_style == horizontal_cam)
         {
             if (bkg.joy & J_LEFT)

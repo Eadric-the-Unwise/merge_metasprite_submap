@@ -40,7 +40,9 @@ void fadeout_white();
 // #define SIZE(A) (UWORD) & (__SIZE_PREFIX(A))
 // #define OFFSET(A) (void *)&(A)
 
-#define DEFAULT_PALETTE 0x1B
+#define DEFAULT_BKG_PALETTE 0x1B
+#define DEFAULT_OBJ0_PALETTE 0xE4;
+#define DEFAULT_OBJ1_PALETTE 0xE1;
 
 #define FADE_DELAY 120
 

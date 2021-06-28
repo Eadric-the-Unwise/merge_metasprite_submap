@@ -90,18 +90,27 @@ void fadeout_black()
     {
         switch (i)
         {
-            //FADE TO WHITE
+            //FADE TO BLACK
         case 0:
-            BGP_REG = DEFAULT_PALETTE;
+            BGP_REG = DEFAULT_BKG_PALETTE;
+            OBP0_REG = DEFAULT_OBJ0_PALETTE;
+            OBP1_REG = DEFAULT_OBJ1_PALETTE;
+
             break;
         case 1:
             BGP_REG = 0x6F;
+            OBP0_REG = 0xF9;
+            OBP1_REG = 0xF6;
             break;
         case 2:
             BGP_REG = 0xBF;
+            OBP0_REG = 0xFE;
+            OBP1_REG = 0xFB;
             break;
         case 3:
             BGP_REG = 0xFF;
+            OBP0_REG = 0xFF;
+            OBP1_REG = 0xFF;
             HIDE_SPRITES;
             break;
         }
@@ -115,19 +124,27 @@ void fadein_black()
     {
         switch (i)
         {
-            //FADE FROM WHITE
+            //FADE FROM BLACK
         case 0:
             BGP_REG = 0xFF;
+            OBP0_REG = 0xFF;
+            OBP1_REG = 0xFB;
             SHOW_SPRITES;
             break;
         case 1:
             BGP_REG = 0xBF;
+            OBP0_REG = 0xFE;
+            OBP1_REG = 0xFB;
             break;
         case 2:
             BGP_REG = 0x6F;
+            OBP0_REG = 0xF9;
+            OBP1_REG = 0xF6;
             break;
         case 3:
-            BGP_REG = DEFAULT_PALETTE;
+            BGP_REG = DEFAULT_BKG_PALETTE;
+            OBP0_REG = DEFAULT_OBJ0_PALETTE;
+            OBP1_REG = DEFAULT_OBJ1_PALETTE;
             break;
         }
         performantdelay(8);
@@ -142,7 +159,7 @@ void fadeout_white()
         {
             //FADE TO WHITE
         case 0:
-            BGP_REG = DEFAULT_PALETTE;
+            BGP_REG = DEFAULT_BKG_PALETTE;
             break;
         case 1:
             BGP_REG = 0x06;
@@ -176,7 +193,7 @@ void fadein_white()
             BGP_REG = 0x06;
             break;
         case 3:
-            BGP_REG = DEFAULT_PALETTE;
+            BGP_REG = DEFAULT_BKG_PALETTE;
             break;
         }
         performantdelay(8);
