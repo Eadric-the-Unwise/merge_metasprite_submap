@@ -3,10 +3,17 @@
 
 extern Variables bkg;
 
-void init_house()
+void init_house(Character *detective)
 {
+    HIDE_SPRITES;
     fadeout_black();
     HIDE_BKG;
+
+    detective->x = 88;
+    detective->y = 80;
+    detective->direction = FACE_DOWN;
+    detective->body_frame_index = DETECTIVE_BODY_DOWN_FRAME_START;
+
     bkg.sliding = FALSE;
     bkg.camera_x = bkg.camera_y = 0;
     bkg.old_camera_x = bkg.camera_x;
@@ -31,5 +38,6 @@ void init_house()
     SCX_REG = bkg.camera_x;
     SCY_REG = bkg.camera_y;
     SHOW_BKG;
+    SHOW_SPRITES;
     fadein_black();
 }

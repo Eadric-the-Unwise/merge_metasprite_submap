@@ -26,7 +26,7 @@ void init_cellar_lvl2()
 
     bkg.redraw = FALSE;
 
-    bkg.camera_style = horizontal_cam;
+    bkg.camera_style = scroll_cam;
 
     SCX_REG = bkg.camera_x;
     SCY_REG = bkg.camera_y;

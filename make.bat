@@ -1,5 +1,5 @@
 REM Automatically generated from Makefile
-@REM del detective_project.gb
+del detective_project.gb
 
 
 @REM C:\c_code\gbdk\bin\lcc.exe -autobank -Wb-ext=.rel -Wb-v -Wl-yt0x1B -Wl-yo256 -Wl-ya4 -o large_map.gb large_map.c^

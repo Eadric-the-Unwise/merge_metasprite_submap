@@ -174,14 +174,14 @@ void animate_smoke(Character *detective, CharacterSmoke *smoke)
 
         smoke->x = detective->x;
         smoke->y = detective->y;
-        if (indoor == 1)
-        {
-            smoke->y = detective->y;
-        }
-        else
-        {
-            smoke->y = detective->y;
-        }
+        // if (indoor == 1)
+        // {
+        //     smoke->y = detective->y;
+        // }
+        // else
+        // {
+        //     smoke->y = detective->y;
+        // }
 
         smoke->body_animate = detective->body_animate;
         smoke->smoke_frame_delay = 0;
@@ -298,7 +298,7 @@ void main()
         }
         else if (bkg.joy & J_START)
         {
-            init_house();
+            init_house(&detective);
         }
         else if (bkg.joy & J_A)
         {
@@ -328,51 +328,33 @@ void main()
                 }
             }
         }
-
-        else if (bkg.sliding)
-        {
-            // If the camera and slide is inside the map, slide, otherwise cancel slide
-            if (!(bkg.camera_x + bkg.slide_x < 0 || bkg.camera_x + bkg.slide_x > bkg.camera_max_x ||
-                  bkg.camera_y + bkg.slide_y < 0 || bkg.camera_y + bkg.slide_y > bkg.camera_max_y))
-            {
-                bkg.camera_x += bkg.slide_x; // Move as much as slide in X direction
-                bkg.camera_y += bkg.slide_y; // " " in Y direction
-                bkg.redraw = TRUE;           // Flag for redraw
-            }
-            else
-                bkg.sliding = FALSE;
-
-            // If camera is at the end of the slide, stop sliding
-            if (bkg.camera_x % 160 == 0 && bkg.camera_y % 144 == 0)
-                bkg.sliding = FALSE;
-        }
-        // make sure else if before all other inputs
-        else if (bkg.joy & J_LEFT && bkg.camera_style == scroll_cam)
-        {
-            // Realistically this would be gated by an edge-check and valid-edge check
-            // (this would replace camera_x++/-- or camera_y++/--)
-            bkg.slide_x = -2; // How much to move in the X direction
-            bkg.slide_y = 0;  // How much to move in the Y direction
-            bkg.sliding = 1;  // Initiate slide
-        }
-        else if (bkg.joy & J_RIGHT && bkg.camera_style == scroll_cam)
-        {
-            bkg.slide_x = 2;
-            bkg.slide_y = 0;
-            bkg.sliding = 1;
-        }
-        else if (bkg.joy & J_UP && bkg.camera_style == scroll_cam)
-        {
-            bkg.slide_x = 0;
-            bkg.slide_y = -2;
-            bkg.sliding = 1;
-        }
-        else if (bkg.joy & J_DOWN && bkg.camera_style == scroll_cam)
-        {
-            bkg.slide_x = 0;
-            bkg.slide_y = 2;
-            bkg.sliding = 1;
-        }
+        // // make sure else if before all other inputs
+        // else if (bkg.joy & J_LEFT && bkg.camera_style == scroll_cam)
+        // {
+        //     // Realistically this would be gated by an edge-check and valid-edge check
+        //     // (this would replace camera_x++/-- or camera_y++/--)
+        //     bkg.slide_x = -2; // How much to move in the X direction
+        //     bkg.slide_y = 0;  // How much to move in the Y direction
+        //     bkg.sliding = 1;  // Initiate slide
+        // }
+        // else if (bkg.joy & J_RIGHT && bkg.camera_style == scroll_cam)
+        // {
+        //     bkg.slide_x = 2;
+        //     bkg.slide_y = 0;
+        //     bkg.sliding = 1;
+        // }
+        // else if (bkg.joy & J_UP && bkg.camera_style == scroll_cam)
+        // {
+        //     bkg.slide_x = 0;
+        //     bkg.slide_y = -2;
+        //     bkg.sliding = 1;
+        // }
+        // else if (bkg.joy & J_DOWN && bkg.camera_style == scroll_cam)
+        // {
+        //     bkg.slide_x = 0;
+        //     bkg.slide_y = 2;
+        //     bkg.sliding = 1;
+        // }
         else if (bkg.camera_style == horizontal_cam)
         {
             if (bkg.joy & J_LEFT)
@@ -392,6 +374,25 @@ void main()
                 }
             }
         }
+
+        else if (bkg.sliding)
+        {
+            // If the camera and slide is inside the map, slide, otherwise cancel slide
+            if (!(bkg.camera_x + bkg.slide_x < 0 || bkg.camera_x + bkg.slide_x > bkg.camera_max_x ||
+                  bkg.camera_y + bkg.slide_y < 0 || bkg.camera_y + bkg.slide_y > bkg.camera_max_y))
+            {
+                bkg.camera_x += bkg.slide_x; // Move as much as slide in X direction
+                bkg.camera_y += bkg.slide_y; // " " in Y direction
+                bkg.redraw = TRUE;           // Flag for redraw
+            }
+            else
+                bkg.sliding = FALSE;
+
+            // If camera is at the end of the slide, stop sliding
+            if (bkg.camera_x % 160 == 0 && bkg.camera_y % 144 == 0)
+                bkg.sliding = FALSE;
+        }
+
         if (joypads.joy0 & J_LEFT)
         {
 
@@ -457,11 +458,26 @@ void main()
 
             if (can_detective_move(detective.x, detective.y - 1))
             {
-                if (detective.body_animate == 0)
+                if (bkg.camera_style == scroll_cam)
                 {
-                    // started moving for the first time
-                    detective.body_animate = 1;
-                    smoke_start_delay = SMOKE_WALK_START_DELAY;
+                    updated = 1;
+                    detective.y -= 1;
+                    if (detective.body_animate == 0)
+                    {
+                        // started moving for the first time
+                        detective.body_animate = 1;
+                        smoke_start_delay = SMOKE_WALK_START_DELAY;
+                    }
+                }
+                else if (bkg.camera_style == vertical_cam)
+                {
+
+                    if (detective.body_animate == 0)
+                    {
+                        // started moving for the first time
+                        detective.body_animate = 1;
+                        smoke_start_delay = SMOKE_WALK_START_DELAY;
+                    }
                 }
             }
         }
@@ -479,11 +495,25 @@ void main()
 
             if (can_detective_move(detective.x, detective.y + 1))
             {
-                if (detective.body_animate == 0)
+                if (bkg.camera_style == scroll_cam)
                 {
-                    // started moving for the first time
-                    detective.body_animate = 1;
-                    smoke_start_delay = SMOKE_WALK_START_DELAY;
+                    updated = 1;
+                    detective.y += 1;
+                    if (detective.body_animate == 0)
+                    {
+                        // started moving for the first time
+                        detective.body_animate = 1;
+                        smoke_start_delay = SMOKE_WALK_START_DELAY;
+                    }
+                }
+                else if (bkg.camera_style == vertical_cam)
+                {
+                    if (detective.body_animate == 0)
+                    {
+                        // started moving for the first time
+                        detective.body_animate = 1;
+                        smoke_start_delay = SMOKE_WALK_START_DELAY;
+                    }
                 }
             }
         }
@@ -517,16 +547,8 @@ void main()
                 smoke_start_delay = SMOKE_IDLE_START_DELAY;
             }
         }
-        if (bkg.redraw)
-        {
-            wait_vbl_done();
-            set_camera();
-            bkg.redraw = FALSE;
-        }
-        else
-            wait_vbl_done();
 
-                /******************************/
+        /******************************/
         // Animations
         /******************************/
 
@@ -609,6 +631,13 @@ void main()
                     .y = 0;
         }
 
-        wait_vbl_done();
+        if (bkg.redraw)
+        {
+            wait_vbl_done();
+            set_camera();
+            bkg.redraw = FALSE;
+        }
+        else
+            wait_vbl_done();
     }
 }

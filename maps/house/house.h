@@ -4,7 +4,8 @@
 #include <gb/gb.h>
 #include "house_map.h"
 #include "house_tiles.h"
+#include "../../character.h"
 
-void init_house();
+void init_house(Character *detective);
 
 #endif
