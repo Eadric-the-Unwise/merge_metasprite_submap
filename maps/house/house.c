@@ -2,14 +2,10 @@
 #include "../../macros.h"
 
 extern Variables bkg;
-extern UBYTE updated;
-extern UINT8 hiwater;
 
 void init_house(Character *detective)
 {
-    fadeout_black();
-    HIDE_BKG;
-
+    // fadeout_black();
     detective->x = 88;
     detective->y = 80;
     detective->direction = FACE_DOWN;
@@ -38,6 +34,4 @@ void init_house(Character *detective)
 
     SCX_REG = bkg.camera_x;
     SCY_REG = bkg.camera_y;
-    SHOW_BKG;
-    fadein_black();
 }

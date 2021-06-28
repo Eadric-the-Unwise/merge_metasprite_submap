@@ -20,8 +20,6 @@ UBYTE apartment_smoke_delay = 0;
 UBYTE apartment_lamp_delay = 0;
 
 UBYTE updated;
-UBYTE indoor;
-UBYTE apartment = 0;
 UBYTE running = 1;
 joypads_t joypads;
 
@@ -40,6 +38,14 @@ UINT8 load_detective_data(Character *detective, UINT8 hiwater)
 
     return hiwater;
 }
+
+// void set_actor_location(Character *detective)
+// {
+//     detective->x = 88;
+//     detective->y = 80;
+//     detective->direction = FACE_DOWN;
+//     detective->body_frame_index = DETECTIVE_BODY_DOWN_FRAME_START;
+// }
 
 //returns value of hiwater
 UINT8 load_smoke_data(UINT8 hiwater)
@@ -298,7 +304,7 @@ void main()
         }
         else if (bkg.joy & J_START)
         {
-            init_house(&detective);
+            bkg.fading = 1;
         }
         else if (bkg.joy & J_A)
         {
@@ -607,9 +613,9 @@ void main()
             sprite_hiwater = 0; //OAM
 
             //Apartment Smoke
-            set_sprite_tile(sprite_hiwater, apartment_smoke_tile_index);
-            move_sprite(sprite_hiwater, 53, 79);
-            set_sprite_prop(sprite_hiwater, apartment_smoke_flip ? S_FLIPX : 0);
+            // set_sprite_tile(sprite_hiwater, apartment_smoke_tile_index);
+            // move_sprite(sprite_hiwater, 53, 79);
+            // set_sprite_prop(sprite_hiwater, apartment_smoke_flip ? S_FLIPX : 0);
 
             sprite_hiwater += 1;
 
@@ -629,6 +635,17 @@ void main()
             for (UINT8 i = sprite_hiwater; i < 40; i++)
                 shadow_OAM[i]
                     .y = 0;
+        }
+
+        if (bkg.fading == 1)
+        {
+            bkg.fading = 0;
+            fadeout_black();
+            init_house(&detective);
+            // set_actor_location(&detective);
+            // move_metasprite(tile_detectivewalk_metasprites[detective.body_frame_index], detective.body_tile_index, hiwater, detective.x, detective.y);
+            update_detective(&detective, detective.x, detective.y, hiwater);
+            fadein_black();
         }
 
         if (bkg.redraw)

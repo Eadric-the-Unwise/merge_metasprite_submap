@@ -102,6 +102,7 @@ void fadeout_black()
             break;
         case 3:
             BGP_REG = 0xFF;
+            HIDE_SPRITES;
             break;
         }
         performantdelay(8);
@@ -117,6 +118,7 @@ void fadein_black()
             //FADE FROM WHITE
         case 0:
             BGP_REG = 0xFF;
+            SHOW_SPRITES;
             break;
         case 1:
             BGP_REG = 0xBF;

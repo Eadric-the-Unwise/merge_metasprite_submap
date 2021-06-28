@@ -23,6 +23,7 @@ typedef struct Variables
     UBYTE joy;
 
     UBYTE sliding;
+    UBYTE fading;
     INT8 slide_x;
     INT8 slide_y;
     // current and old positions of the camera in pixels
