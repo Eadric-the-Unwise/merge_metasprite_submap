@@ -302,7 +302,7 @@ void main()
         }
         else if (bkg.joy & J_A)
         {
-            init_cellar();
+            init_cellar(&detective);
         }
         else if (bkg.joy & J_B)
         {

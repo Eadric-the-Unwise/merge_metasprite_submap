@@ -2,11 +2,19 @@
 #include "../../../macros.h"
 
 extern Variables bkg;
+extern UBYTE updated;
 
-void init_cellar()
+void init_cellar(Character *detective)
 {
     fadeout_black();
     HIDE_BKG;
+
+    detective->x = 48;
+    detective->y = 120;
+    detective->direction = FACE_RIGHT;
+    detective->body_frame_index = DETECTIVE_BODY_DOWN_FRAME_START;
+    updated = 1;
+
     bkg.sliding = FALSE;
     bkg.camera_x = bkg.camera_y = 0;
     bkg.old_camera_x = bkg.camera_x;

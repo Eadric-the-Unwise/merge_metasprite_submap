@@ -2,10 +2,11 @@
 #include "../../macros.h"
 
 extern Variables bkg;
+extern UBYTE updated;
+extern UINT8 hiwater;
 
 void init_house(Character *detective)
 {
-    HIDE_SPRITES;
     fadeout_black();
     HIDE_BKG;
 
@@ -13,6 +14,7 @@ void init_house(Character *detective)
     detective->y = 80;
     detective->direction = FACE_DOWN;
     detective->body_frame_index = DETECTIVE_BODY_DOWN_FRAME_START;
+    move_metasprite(tile_detectivewalk_metasprites[detective->body_frame_index], detective->body_tile_index, hiwater, detective->x, detective->y);
 
     bkg.sliding = FALSE;
     bkg.camera_x = bkg.camera_y = 0;
@@ -38,6 +40,5 @@ void init_house(Character *detective)
     SCX_REG = bkg.camera_x;
     SCY_REG = bkg.camera_y;
     SHOW_BKG;
-    SHOW_SPRITES;
     fadein_black();
 }

@@ -4,7 +4,8 @@
 #include <gb/gb.h>
 #include "cellar_map.h"
 #include "cellar_tiles.h"
+#include "../../../macros.h"
 
-void init_cellar();
+void init_cellar(Character *detective);
 
 #endif

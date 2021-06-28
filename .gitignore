@@ -6,7 +6,7 @@
 *.map
 *.ihx
 *.sym
-*.gb
+# *.gb
 *.sav
 *.rel
 *.png
