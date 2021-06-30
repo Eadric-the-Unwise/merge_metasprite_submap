@@ -591,7 +591,7 @@ void main()
             // move_sprite(sprite_hiwater, 53, 79);
             // set_sprite_prop(sprite_hiwater, apartment_smoke_flip ? S_FLIPX : 0);
 
-            sprite_hiwater += 1;
+            // sprite_hiwater += 1;
 
             // Smoke trail
             for (UINT8 i = 0; i < SMOKE_OBJECT_COUNT; i++)
@@ -618,7 +618,15 @@ void main()
             init_house(&detective);
             // set_actor_location(&detective);
             // move_metasprite(tile_detectivewalk_metasprites[detective.body_frame_index], detective.body_tile_index, hiwater, detective.x, detective.y);
-            update_detective(&detective, detective.x, detective.y, hiwater);
+            for (UINT8 i = 0; i < 40; i++)
+                shadow_OAM[i]
+                    .y = 0;
+
+            for (UINT8 i = 0; i < SMOKE_OBJECT_COUNT; i++)
+            {
+                setup_smoke(&smoke_objects[i]);
+            }
+            update_detective(&detective, detective.x, detective.y, 0);
             fadein_black();
         }
 
