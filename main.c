@@ -578,7 +578,6 @@ void main()
         /******************************/
         // Drawing
         /******************************/
-
         if (updated == 1)
         {
             // If there's been any changes, update the metasprites.
